@@ -34,7 +34,19 @@ use Colors\Color;
  * @author Joan Fabrégat <joan@codeinc.fr>
  */
 class Console {
-	private $throwExceptions = false;
+	/**
+	 * @var bool
+	 */
+	private $throwExceptions;
+
+	/**
+	 * Console constructor.
+	 *
+	 * @param bool|null $throwExceptions
+	 */
+	public function __construct(bool $throwExceptions = null) {
+		$this->throwExceptions = $throwExceptions ?? false;
+	}
 
 	/**
 	 * Asks a yes/no question
