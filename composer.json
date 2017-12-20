@@ -1,10 +1,10 @@
 {
   "name": "codeinchq/lib-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Code Inc.'s command line interface library",
   "homepage": "https://github.com/codeinchq/lib-cli",
   "type": "library",
-  "license": "proprietary",
+  "license": "MIT",
   "require": {
     "php": ">=7.0",
     "codeinchq/lib-arrayaccess": "^1.1",
