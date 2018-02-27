@@ -1,6 +1,6 @@
 {
   "name": "codeinchq/lib-cli",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Code Inc.'s command line interface library",
   "homepage": "https://github.com/codeinchq/lib-cli",
   "type": "library",
