@@ -29,23 +29,20 @@ $console = new Console(true);
 /*
  * Asks a Yes / No question and returns a boolean
  */
-if ($console->askBool("Do you like chocolate?")) {
-	echo "true";
-}
-else {
-	echo "false";
-}
+$console->askBool("Do you like chocolate?"); // returns true or false
 
 /*
  * Asks a questions expecting a string as an answer
  */
-echo $console->askString("What is your city?");
+echo $console->askString("What is your city?"); // returns the response or null if no response is provided
+echo $console->askString("What is your city?", false); // returns the response or throws an exception if no response is provided
 
 /*
  * Asks a questions with a closed list of anwsers
  */
 $colors = ["green", "red", "blue", "purple", "orange", "yellow"];
-echo $console->askOptions("What is your favorite color?", $colors);
+echo $console->askOptions("What is your favorite color?", $colors); // returns chosen color or throws an exception if no response is provided
+echo $console->askOptions("What is your favorite color?", $colors, true); // returns chosen color or null if no response is provided
 ```
 
 ### `Arguments` class

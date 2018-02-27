@@ -256,7 +256,8 @@ class Arguments implements \ArrayAccess, \IteratorAggregate {
 	 *
 	 * @return \ArrayIterator
 	 */
-	public function getIterator():\ArrayIterator {
+	public function getIterator():\ArrayIterator
+	{
 		return new \ArrayIterator($this->arguments);
 	}
 
@@ -265,7 +266,8 @@ class Arguments implements \ArrayAccess, \IteratorAggregate {
 	 *
 	 * @return array
 	 */
-	protected function getAccessibleArray():array {
+	protected function getAccessibleArray():array
+	{
 		return $this->arguments;
 	}
 }

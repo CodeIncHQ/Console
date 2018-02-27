@@ -92,14 +92,15 @@ class Console {
 	}
 
 	/**
-	 * Asks a question with a closed list of anwsers.
+	 * Asks a question with a closed list of anwsers. Returns the given anwser or null if the response is empty.
 	 *
 	 * @param string $question
 	 * @param array $options
-	 * @return mixed
+	 * @param bool|null $allowEmpty default: false
+	 * @return string|null
 	 * @throws ConsoleException
 	 */
-	public function askOptions(string $question, array $options)
+	public function askOptions(string $question, array $options, ?bool $allowEmpty = null):?string
 	{
 		try {
 			// building question and asking
@@ -111,6 +112,9 @@ class Console {
 
 			// chechking answer
 			if (empty($r)) {
+				if ($allowEmpty === true) {
+					return null;
+				}
 				throw new ConsoleEmptyResponseException();
 			}
 			if (!array_key_exists($r, $options)) {
@@ -135,14 +139,14 @@ class Console {
 	}
 
 	/**
-	 * Asks a question a gets the string anwsers.
+	 * Asks a question a gets the string anwsers or null if the answer is empty.
 	 *
 	 * @param string $question
-	 * @param bool|null $allowEmpty
-	 * @return string
+	 * @param bool|null $allowEmpty default: true
+	 * @return string|null
 	 * @throws ConsoleException
 	 */
-	public function askString(string $question, bool $allowEmpty = null):string
+	public function askString(string $question, ?bool $allowEmpty = null):?string
 	{
 		try {
 			$r = readline($question);
@@ -150,7 +154,7 @@ class Console {
 				throw new ConsoleEmptyResponseException();
 			}
 
-			return $r;
+			return $r ?: null;
 		}
 		catch (ConsoleException $exception) {
 			if (!$this->throwExceptions) {
