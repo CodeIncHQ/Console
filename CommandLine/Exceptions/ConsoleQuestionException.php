@@ -19,24 +19,25 @@
 // Time:     13:22
 // Project:  lib-cli
 //
-namespace CodeInc\CLI\Console\Exceptions;
+namespace CodeInc\CommandLine\Exceptions;
 use Throwable;
 
 
 /**
- * Class QuestionException
+ * Class ConsoleQuestionException
  *
- * @package CodeInc\CLI\Console\Exceptions
+ * @package CodeInc\CommandLine\Exceptions
  * @author Joan Fabrégat <joan@codeinc.fr>
  */
-class QuestionException extends ConsoleException {
+class ConsoleQuestionException extends ConsoleException {
 	/**
 	 * QuestionException constructor.
 	 *
 	 * @param string $question
 	 * @param Throwable $previous
 	 */
-	public function __construct(string $question, Throwable $previous) {
+	public function __construct(string $question, Throwable $previous)
+	{
 		parent::__construct("Error while asking the user \"$question\"", $previous);
 	}
 }

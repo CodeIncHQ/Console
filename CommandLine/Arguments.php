@@ -19,19 +19,18 @@
 // Time:     13:08
 // Project:  lib-cli
 //
-namespace CodeInc\CLI\Args;
+namespace CodeInc\CommandLine;
 use CodeInc\ArrayAccess\ArrayAccessTrait;
-use CodeInc\CLI\CLI;
-use CodeInc\CLI\Exceptions;
+use CodeInc\CommandLine\Exceptions;
 
 
 /**
- * Class Args
+ * Class Arguments
  *
- * @package CodeInc\CLI
+ * @package CodeInc\CommandLine
  * @author Joan Fabrégat <joan@codeinc.fr>
  */
-class Args implements \ArrayAccess, \IteratorAggregate {
+class Arguments implements \ArrayAccess, \IteratorAggregate {
 	use ArrayAccessTrait;
 
 	/**
@@ -58,10 +57,10 @@ class Args implements \ArrayAccess, \IteratorAggregate {
 	/**
 	 * Args constructor.
 	 *
-	 * @throws Exceptions\CLIRequiredException
+	 * @throws Exceptions\CommandLineRequiredException
 	 */
 	public function __construct() {
-		CLI::requireCLI();
+		CommandLine::requireCLI();
 		$this->input = $GLOBALS['argv'];
 		$this->parse();
 	}
@@ -69,7 +68,8 @@ class Args implements \ArrayAccess, \IteratorAggregate {
 	/**
 	 * Parses the arguments
 	 */
-	private function parse() {
+	private function parse():void
+	{
 		$continueNext = false;
 		foreach ($this->input as $key => $entry) {
 			if ($key > 0) {
@@ -107,7 +107,8 @@ class Args implements \ArrayAccess, \IteratorAggregate {
 	 *
 	 * @return array
 	 */
-	public function getParameters():array {
+	public function getParameters():array
+	{
 		return $this->parameters;
 	}
 
@@ -116,7 +117,8 @@ class Args implements \ArrayAccess, \IteratorAggregate {
 	 *
 	 * @return int
 	 */
-	public function countParameters():int {
+	public function countParameters():int
+	{
 		return count($this->parameters);
 	}
 
@@ -125,7 +127,8 @@ class Args implements \ArrayAccess, \IteratorAggregate {
 	 *
 	 * @return bool
 	 */
-	public function hasParameters():bool {
+	public function hasParameters():bool
+	{
 		return !empty($this->parameters);
 	}
 
@@ -134,7 +137,8 @@ class Args implements \ArrayAccess, \IteratorAggregate {
 	 *
 	 * @return array
 	 */
-	public function getArguments():array {
+	public function getArguments():array
+	{
 		return $this->arguments;
 	}
 
@@ -143,7 +147,8 @@ class Args implements \ArrayAccess, \IteratorAggregate {
 	 *
 	 * @return int
 	 */
-	public function countArguments():int {
+	public function countArguments():int
+	{
 		return count($this->arguments);
 	}
 
@@ -152,7 +157,8 @@ class Args implements \ArrayAccess, \IteratorAggregate {
 	 *
 	 * @return bool
 	 */
-	public function hasArguments():bool {
+	public function hasArguments():bool
+	{
 		return !empty($this->arguments);
 	}
 
@@ -161,7 +167,8 @@ class Args implements \ArrayAccess, \IteratorAggregate {
 	 *
 	 * @return array
 	 */
-	public function getInput():array {
+	public function getInput():array
+	{
 		return $this->input;
 	}
 
@@ -169,23 +176,25 @@ class Args implements \ArrayAccess, \IteratorAggregate {
 	 * Returns a parameter's value using its number or FALSE if the script does'nt have such a parameter.
 	 *
 	 * @param int $number
-	 * @return string|bool
+	 * @return string|null
 	 */
-	public function getParameterValue(int $number) {
+	public function getParameterValue(int $number):?string
+	{
 		if (array_key_exists($number, $this->parameters)) {
 			return $this->parameters[$number];
 		}
-		return false;
+		return null;
 	}
 
 	/**
 	 * Returns a parameter's number in the scripts parameters or FALSE if the script does'nt have such a parameter.
 	 *
 	 * @param string $parameter
-	 * @return int|false
+	 * @return int|null
 	 */
-	public function getParameterNumber(string $parameter) {
-		return array_search($parameter, $this->parameters);
+	public function getParameterNumber(string $parameter):?int
+	{
+		return array_search($parameter, $this->parameters) ?: null;
 	}
 
 	/**
@@ -194,7 +203,8 @@ class Args implements \ArrayAccess, \IteratorAggregate {
 	 * @param string $parameter
 	 * @return bool
 	 */
-	public function hasParameter(string $parameter):bool {
+	public function hasParameter(string $parameter):bool
+	{
 		return in_array($parameter, $this->parameters);
 	}
 
@@ -204,7 +214,8 @@ class Args implements \ArrayAccess, \IteratorAggregate {
 	 * @param string|array $argument The name (string) or the names (array) of the argument
 	 * @return bool
 	 */
-	public function hasArgument($argument):bool {
+	public function hasArgument($argument):bool
+	{
 		if (is_array($argument)) {
 			foreach ($argument as $value) {
 				if ($this->hasArgument($value)) {
@@ -225,7 +236,8 @@ class Args implements \ArrayAccess, \IteratorAggregate {
 	 * @param string|array $argument The name (string) or the names (array) of the argument
 	 * @return string|null|false
 	 */
-	public function getArgumentValue($argument) {
+	public function getArgumentValue($argument)
+	{
 		if (is_array($argument)) {
 			foreach ($argument as $value) {
 				if (array_key_exists($value, $this->arguments)) {

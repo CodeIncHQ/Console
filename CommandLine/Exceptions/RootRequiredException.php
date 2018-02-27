@@ -16,28 +16,28 @@
 //
 // Author:   Joan Fabrégat <joan@codeinc.fr>
 // Date:     19/12/2017
-// Time:     13:11
+// Time:     13:10
 // Project:  lib-cli
 //
-namespace CodeInc\CLI\Exceptions;
-use CodeInc\CLI\CLIException;
+namespace CodeInc\CommandLine\Exceptions;
+use CodeInc\CommandLine\CommandLineException;
 use Throwable;
 
 
 /**
- * Class UserRequiredException
+ * Class RootRequiredException
  *
  * @package CodeInc\CLI\Exce
  * @author Joan Fabrégat <joan@codeinc.fr>
  */
-class UserRequiredException extends CLIException {
+class RootRequiredException extends CommandLineException {
 	/**
-	 * UserRequiredException constructor.
+	 * RootRequiredException constructor.
 	 *
-	 * @param string $user
 	 * @param Throwable|null $previous
 	 */
-	public function __construct(string $user, Throwable $previous = null) {
-		parent::__construct("This script requires the user account \"$user\"", $previous);
+	public function __construct(Throwable $previous = null)
+	{
+		parent::__construct("This script requires root privileges", $previous);
 	}
 }

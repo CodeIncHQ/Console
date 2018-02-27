@@ -16,27 +16,28 @@
 //
 // Author:   Joan Fabrégat <joan@codeinc.fr>
 // Date:     19/12/2017
-// Time:     13:09
+// Time:     13:20
 // Project:  lib-cli
 //
-namespace CodeInc\CLI\Exceptions;
-use CodeInc\CLI\CLIException;
+namespace CodeInc\CommandLine\Exceptions;
+use CodeInc\CommandLine\Exceptions\ConsoleException;
 use Throwable;
 
 
 /**
- * Class CLIRequiredException
+ * Class ConsoleEmptyResponseException
  *
- * @package CodeInc\CLI
+ * @package CodeInc\CommandLine\Exceptions
  * @author Joan Fabrégat <joan@codeinc.fr>
  */
-class CLIRequiredException extends CLIException {
+class ConsoleEmptyResponseException extends ConsoleException {
 	/**
-	 * CLIRequiredException constructor.
+	 * EmptyResponseException constructor.
 	 *
 	 * @param Throwable|null $previous
 	 */
-	public function __construct(Throwable $previous = null) {
-		parent::__construct("This script is only available in command line", $previous);
+	public function __construct(Throwable $previous = null)
+	{
+		parent::__construct("The anwser can not be empty", $previous);
 	}
 }

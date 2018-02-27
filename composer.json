@@ -6,13 +6,13 @@
   "type": "library",
   "license": "MIT",
   "require": {
-    "php": ">=7.0",
+    "php": ">=7.2",
     "codeinchq/lib-arrayaccess": "^1.1",
     "kevinlebrun/colors.php": "^1.0"
   },
   "autoload": {
     "psr-4": {
-      "CodeInc\\CLI\\": "src/"
+      "CodeInc\\CommandLine\\": "src/"
     }
   },
   "authors": [

@@ -19,11 +19,11 @@
 // Time:     12:39
 // Project:  serverinstall
 //
-namespace CodeInc\CLI\Console;
-use CodeInc\CLI\Console\Exceptions\ConsoleException;
-use CodeInc\CLI\Console\Exceptions\EmptyResponseException;
-use CodeInc\CLI\Console\Exceptions\QuestionException;
-use CodeInc\CLI\Console\Exceptions\WrongAnwserException;
+namespace CodeInc\CommandLine;
+use CodeInc\CommandLine\Exceptions\ConsoleException;
+use CodeInc\CommandLine\Exceptions\ConsoleEmptyResponseException;
+use CodeInc\CommandLine\Exceptions\ConsoleQuestionException;
+use CodeInc\CommandLine\Exceptions\ConsoleWrongAnwserException;
 use Colors\Color;
 
 
@@ -44,7 +44,8 @@ class Console {
 	 *
 	 * @param bool|null $throwExceptions
 	 */
-	public function __construct(bool $throwExceptions = null) {
+	public function __construct(bool $throwExceptions = null)
+	{
 		$this->throwExceptions = $throwExceptions ?? false;
 	}
 
@@ -55,7 +56,8 @@ class Console {
 	 * @return bool
 	 * @throws ConsoleException
 	 */
-	public function askBool(string $question):bool {
+	public function askBool(string $question):bool
+	{
 		try {
 			// asking
 			$r = strtolower($this->askString("$question (y/n)"));
@@ -72,7 +74,7 @@ class Console {
 
 			// else: exception
 			else {
-				throw new WrongAnwserException($r, ["y", "yes", "n", "no"]);
+				throw new ConsoleWrongAnwserException($r, ["y", "yes", "n", "no"]);
 			}
 		}
 		catch (ConsoleException $exception) {
@@ -85,7 +87,7 @@ class Console {
 			}
 		}
 		catch (\Throwable $exception) {
-			throw new QuestionException($question, $exception);
+			throw new ConsoleQuestionException($question, $exception);
 		}
 	}
 
@@ -94,10 +96,11 @@ class Console {
 	 *
 	 * @param string $question
 	 * @param array $options
-	 * @return string
+	 * @return mixed
 	 * @throws ConsoleException
 	 */
-	public function askOptions(string $question, array $options) {
+	public function askOptions(string $question, array $options)
+	{
 		try {
 			// building question and asking
 			$q = $question." (".implode("/", array_keys($options)).")".PHP_EOL;
@@ -108,10 +111,10 @@ class Console {
 
 			// chechking answer
 			if (empty($r)) {
-				throw new EmptyResponseException();
+				throw new ConsoleEmptyResponseException();
 			}
 			if (!array_key_exists($r, $options)) {
-				throw new WrongAnwserException($r, array_keys($options));
+				throw new ConsoleWrongAnwserException($r, array_keys($options));
 			}
 
 			// returning the selected option
@@ -120,14 +123,14 @@ class Console {
 		catch (ConsoleException $exception) {
 			if (!$this->throwExceptions) {
 				$this->renderError($exception);
-				$this->askOptions($question, $options);
+				return $this->askOptions($question, $options);
 			}
 			else {
 				throw $exception;
 			}
 		}
 		catch (\Throwable $exception) {
-			throw new QuestionException($question, $exception);
+			throw new ConsoleQuestionException($question, $exception);
 		}
 	}
 
@@ -139,11 +142,12 @@ class Console {
 	 * @return string
 	 * @throws ConsoleException
 	 */
-	public function askString(string $question, bool $allowEmpty = null):string {
+	public function askString(string $question, bool $allowEmpty = null):string
+	{
 		try {
 			$r = readline($question);
 			if ($allowEmpty === false && empty($r)) {
-				throw new EmptyResponseException();
+				throw new ConsoleEmptyResponseException();
 			}
 
 			return $r;
@@ -151,14 +155,14 @@ class Console {
 		catch (ConsoleException $exception) {
 			if (!$this->throwExceptions) {
 				$this->renderError($exception);
-				$this->askString($question, $allowEmpty);
+				return $this->askString($question, $allowEmpty);
 			}
 			else {
 				throw $exception;
 			}
 		}
 		catch (\Throwable $exception) {
-			throw new QuestionException($question, $exception);
+			throw new ConsoleQuestionException($question, $exception);
 		}
 	}
 
@@ -167,7 +171,8 @@ class Console {
 	 *
 	 * @param string|\Exception $msg
 	 */
-	protected function renderError($msg) {
+	protected function renderError($msg):void
+	{
 		if ($msg instanceof \Exception) {
 			$msg = $msg->getMessage();
 		}

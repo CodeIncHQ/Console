@@ -16,27 +16,53 @@
 //
 // Author:   Joan Fabrégat <joan@codeinc.fr>
 // Date:     19/12/2017
-// Time:     13:07
+// Time:     13:08
 // Project:  lib-cli
 //
-namespace CodeInc\CLI;
-use Throwable;
+namespace CodeInc\CommandLine;
+use CodeInc\CommandLine\Exceptions\RootRequiredException;
+use CodeInc\CommandLine\Exceptions\CommandLineRequiredException;
+use CodeInc\CommandLine\Exceptions\UserRequiredException;
 
 
 /**
- * Class CLIException
+ * Class CommandLine
  *
- * @package CodeInc\CLI
+ * @package CodeInc\CommandLine
  * @author Joan Fabrégat <joan@codeinc.fr>
  */
-class CLIException extends \Exception {
+class CommandLine {
 	/**
-	 * CLIException constructor.
+	 * Require CLI mode.
 	 *
-	 * @param string $message
-	 * @param Throwable|null $previous
+	 * @throws CommandLineRequiredException
 	 */
-	public function __construct(string $message, Throwable $previous = null) {
-		parent::__construct($message, 0, $previous);
+	public static function requireCLI() {
+		if (php_sapi_name() != "cli") {
+			throw new CommandLineRequiredException();
+		}
+	}
+
+	/**
+	 * Require the root privileges.
+	 *
+	 * @throws RootRequiredException
+	 */
+	public static function requireRoot() {
+		if ($_SERVER['USER'] != "root") {
+			throw new RootRequiredException();
+		}
+	}
+
+	/**
+	 * Requires a given user.
+	 *
+	 * @param string $user
+	 * @throws UserRequiredException
+	 */
+	public static function requireUser(string $user) {
+		if ($_SERVER['USER'] != $user) {
+			throw new UserRequiredException($user);
+		}
 	}
 }

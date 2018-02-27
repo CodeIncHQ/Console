@@ -16,27 +16,28 @@
 //
 // Author:   Joan Fabrégat <joan@codeinc.fr>
 // Date:     19/12/2017
-// Time:     13:10
+// Time:     13:09
 // Project:  lib-cli
 //
-namespace CodeInc\CLI\Exceptions;
-use CodeInc\CLI\CLIException;
+namespace CodeInc\CommandLine\Exceptions;
+use CodeInc\CommandLine\CommandLineException;
 use Throwable;
 
 
 /**
- * Class RootRequiredException
+ * Class CommandLineRequiredException
  *
- * @package CodeInc\CLI\Exce
+ * @package CodeInc\CommandLine\Exceptions
  * @author Joan Fabrégat <joan@codeinc.fr>
  */
-class RootRequiredException extends CLIException {
+class CommandLineRequiredException extends CommandLineException {
 	/**
-	 * RootRequiredException constructor.
+	 * CLIRequiredException constructor.
 	 *
 	 * @param Throwable|null $previous
 	 */
-	public function __construct(Throwable $previous = null) {
-		parent::__construct("This script requires root privileges", $previous);
+	public function __construct(Throwable $previous = null)
+	{
+		parent::__construct("This script is only available in command line", $previous);
 	}
 }

@@ -19,17 +19,17 @@
 // Time:     13:20
 // Project:  lib-cli
 //
-namespace CodeInc\CLI\Console\Exceptions;
+namespace CodeInc\CommandLine\Exceptions;
 use Throwable;
 
 
 /**
- * Class WrongAnwserException
+ * Class ConsoleWrongAnwserException
  *
- * @package CodeInc\CLI\Console\Exceptions
+ * @package CodeInc\CommandLine\Exceptions
  * @author Joan Fabrégat <joan@codeinc.fr>
  */
-class WrongAnwserException extends ConsoleException {
+class ConsoleWrongAnwserException extends ConsoleException {
 	/**
 	 * WrongAnwserException constructor.
 	 *
@@ -37,7 +37,8 @@ class WrongAnwserException extends ConsoleException {
 	 * @param array|null $options
 	 * @param Throwable|null $previous
 	 */
-	public function __construct(string $anwser, array $options = null, Throwable $previous = null) {
+	public function __construct(string $anwser, array $options = null, Throwable $previous = null)
+	{
 		$message = "Unable to understand the anwser \"$anwser\"";
 		if ($options) {
 			$message .= " (possible anwsers: ".implode(", ", $options).")";

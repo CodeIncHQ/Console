@@ -19,16 +19,14 @@
 // Time:     13:17
 // Project:  lib-cli
 //
-namespace CodeInc\CLI\Console\Exceptions;
-use CodeInc\CLI\CLIException;
+namespace CodeInc\CommandLine\Exceptions;
+use CodeInc\CommandLine\CommandLineException;
 
 
 /**
  * Class ConsoleException
  *
- * @package CodeInc\CLI
+ * @package CodeInc\CommandLine\Exceptions
  * @author Joan Fabrégat <joan@codeinc.fr>
  */
-class ConsoleException extends CLIException {
-
-}
+class ConsoleException extends CommandLineException { }
