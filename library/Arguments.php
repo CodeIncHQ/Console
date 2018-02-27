@@ -19,9 +19,9 @@
 // Time:     13:08
 // Project:  lib-cli
 //
-namespace CodeInc\CommandLine;
+namespace CodeInc\Cli;
 use CodeInc\ArrayAccess\ArrayAccessTrait;
-use CodeInc\CommandLine\Exceptions;
+use CodeInc\Cli\Exceptions;
 
 
 /**

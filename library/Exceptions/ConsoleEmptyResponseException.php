@@ -16,29 +16,28 @@
 //
 // Author:   Joan Fabrégat <joan@codeinc.fr>
 // Date:     19/12/2017
-// Time:     13:11
+// Time:     13:20
 // Project:  lib-cli
 //
-namespace CodeInc\CommandLine\Exceptions;
-use CodeInc\CommandLine\CommandLineException;
+namespace CodeInc\Cli\Exceptions;
+use CodeInc\Cli\Exceptions\ConsoleException;
 use Throwable;
 
 
 /**
- * Class UserRequiredException
+ * Class ConsoleEmptyResponseException
  *
- * @package CodeInc\CLI\Exce
+ * @package CodeInc\CommandLine\Exceptions
  * @author Joan Fabrégat <joan@codeinc.fr>
  */
-class UserRequiredException extends CommandLineException {
+class ConsoleEmptyResponseException extends ConsoleException {
 	/**
-	 * UserRequiredException constructor.
+	 * EmptyResponseException constructor.
 	 *
-	 * @param string $user
 	 * @param Throwable|null $previous
 	 */
-	public function __construct(string $user, Throwable $previous = null)
+	public function __construct(Throwable $previous = null)
 	{
-		parent::__construct("This script requires the user account \"$user\"", $previous);
+		parent::__construct("The anwser can not be empty", $previous);
 	}
 }

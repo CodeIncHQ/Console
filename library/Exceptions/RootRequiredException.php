@@ -16,28 +16,28 @@
 //
 // Author:   Joan Fabrégat <joan@codeinc.fr>
 // Date:     19/12/2017
-// Time:     13:22
+// Time:     13:10
 // Project:  lib-cli
 //
-namespace CodeInc\CommandLine\Exceptions;
+namespace CodeInc\Cli\Exceptions;
+use CodeInc\Cli\CommandLineException;
 use Throwable;
 
 
 /**
- * Class ConsoleQuestionException
+ * Class RootRequiredException
  *
- * @package CodeInc\CommandLine\Exceptions
+ * @package CodeInc\CLI\Exce
  * @author Joan Fabrégat <joan@codeinc.fr>
  */
-class ConsoleQuestionException extends ConsoleException {
+class RootRequiredException extends CommandLineException {
 	/**
-	 * QuestionException constructor.
+	 * RootRequiredException constructor.
 	 *
-	 * @param string $question
-	 * @param Throwable $previous
+	 * @param Throwable|null $previous
 	 */
-	public function __construct(string $question, Throwable $previous)
+	public function __construct(Throwable $previous = null)
 	{
-		parent::__construct("Error while asking the user \"$question\"", $previous);
+		parent::__construct("This script requires root privileges", $previous);
 	}
 }

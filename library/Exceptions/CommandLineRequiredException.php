@@ -19,7 +19,7 @@
 // Time:     13:09
 // Project:  lib-cli
 //
-namespace CodeInc\CommandLine\Exceptions;
+namespace CodeInc\Cli\Exceptions;
 use CodeInc\CommandLine\CommandLineException;
 use Throwable;
 

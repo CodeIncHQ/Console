@@ -19,10 +19,10 @@
 // Time:     13:08
 // Project:  lib-cli
 //
-namespace CodeInc\CommandLine;
-use CodeInc\CommandLine\Exceptions\RootRequiredException;
-use CodeInc\CommandLine\Exceptions\CommandLineRequiredException;
-use CodeInc\CommandLine\Exceptions\UserRequiredException;
+namespace CodeInc\Cli;
+use CodeInc\Cli\Exceptions\RootRequiredException;
+use CodeInc\Cli\Exceptions\CommandLineRequiredException;
+use CodeInc\Cli\Exceptions\UserRequiredException;
 
 
 /**

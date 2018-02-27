@@ -16,28 +16,28 @@
 //
 // Author:   Joan Fabrégat <joan@codeinc.fr>
 // Date:     19/12/2017
-// Time:     13:20
+// Time:     13:22
 // Project:  lib-cli
 //
-namespace CodeInc\CommandLine\Exceptions;
-use CodeInc\CommandLine\Exceptions\ConsoleException;
+namespace CodeInc\Cli\Exceptions;
 use Throwable;
 
 
 /**
- * Class ConsoleEmptyResponseException
+ * Class ConsoleQuestionException
  *
  * @package CodeInc\CommandLine\Exceptions
  * @author Joan Fabrégat <joan@codeinc.fr>
  */
-class ConsoleEmptyResponseException extends ConsoleException {
+class ConsoleQuestionException extends ConsoleException {
 	/**
-	 * EmptyResponseException constructor.
+	 * QuestionException constructor.
 	 *
-	 * @param Throwable|null $previous
+	 * @param string $question
+	 * @param Throwable $previous
 	 */
-	public function __construct(Throwable $previous = null)
+	public function __construct(string $question, Throwable $previous)
 	{
-		parent::__construct("The anwser can not be empty", $previous);
+		parent::__construct("Error while asking the user \"$question\"", $previous);
 	}
 }

@@ -19,7 +19,7 @@
 // Time:     13:07
 // Project:  lib-cli
 //
-namespace CodeInc\CommandLine;
+namespace CodeInc\Cli;
 use Throwable;
 
 
