@@ -10,9 +10,26 @@ The `CommandLine` class provides simple utility static methods
 <?php
 use CodeInc\CommandLine\CommandLine;
 
-CommandLine::requireCLI(); // requires the CLI mode
-CommandLine::requireRoot(); // requires the root user
-CommandLine::requireUser("username"); // requires a given user
+// returns true if the script is running in CLI mode
+CommandLine::isCLI(); 
+
+// returns true if the current user is 'root'
+CommandLine::isRoot(); 
+
+// returns true if the current user is 'username'
+CommandLine::isUser("username"); 
+
+// returns the current user name or null is the user is unknow.
+CommandLine::getUser();
+
+// thow an exception if not in CLI mode
+CommandLine::requireCLI(); 
+
+// thow an exception if the current user is not 'root'
+CommandLine::requireRoot(); 
+
+// thow an exception if the current user is not 'username'
+CommandLine::requireUser("username"); 
 ```
 
 ### `Console` class

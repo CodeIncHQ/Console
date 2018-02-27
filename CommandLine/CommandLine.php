@@ -33,14 +33,25 @@ use CodeInc\CommandLine\Exceptions\UserRequiredException;
  */
 class CommandLine {
 	/**
-	 * Require CLI mode.
+	 * Requires CLI mode.
 	 *
 	 * @throws CommandLineRequiredException
 	 */
-	public static function requireCLI() {
-		if (php_sapi_name() != "cli") {
+	public static function requireCLI():void
+	{
+		if (!self::isCLI()) {
 			throw new CommandLineRequiredException();
 		}
+	}
+
+	/**
+	 * Verifies if the script runs in CLI mode.
+	 *
+	 * @return bool
+	 */
+	public static function isCLI():bool
+	{
+		return php_sapi_name() == "cli";
 	}
 
 	/**
@@ -48,10 +59,22 @@ class CommandLine {
 	 *
 	 * @throws RootRequiredException
 	 */
-	public static function requireRoot() {
-		if ($_SERVER['USER'] != "root") {
+	public static function requireRoot():void
+	{
+		if (!self::isRoot()) {
 			throw new RootRequiredException();
 		}
+	}
+
+	/**
+	 * Verifies if the current user is the "root".
+	 *
+	 * @uses CommandLine::isUser()
+	 * @return bool
+	 */
+	public static function isRoot():bool
+	{
+		return self::isUser("root");
 	}
 
 	/**
@@ -60,9 +83,30 @@ class CommandLine {
 	 * @param string $user
 	 * @throws UserRequiredException
 	 */
-	public static function requireUser(string $user) {
-		if ($_SERVER['USER'] != $user) {
+	public static function requireUser(string $user):void
+	{
+		if (!self::isUser($user)) {
 			throw new UserRequiredException($user);
 		}
+	}
+
+	/**
+	 * Verifies if the current user is the given user.
+	 *
+	 * @param string $user
+	 * @return bool
+	 */
+	public static function isUser(string $user):bool
+	{
+		return self::getUser() == $user;
+	}
+
+	/**
+	 * Returns the current user name or null is the user is unknow.
+	 *
+	 * @return null|string
+	 */
+	public static function getUser():?string {
+		return $_SERVER['USER'] ?? null;
 	}
 }
