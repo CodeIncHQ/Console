@@ -8,7 +8,7 @@ The `CommandLine` class provides simple utility static methods
 
 ```php
 <?php
-use CodeInc\CommandLine\CommandLine;
+use CodeInc\Cli\CommandLine;
 
 // returns true if the script is running in CLI mode
 CommandLine::isCLI(); 
@@ -38,7 +38,7 @@ The `Console` class allows you to interact with the user through the console.
 
 ```php
 <?php
-use CodeInc\CommandLine\Console;
+use CodeInc\Cli\Console;
 
 // the parameter specifies if the class should throw exceptions
 $console = new Console(true);
@@ -76,7 +76,7 @@ The `Arguments` class is intended to help accessing the script arguments and par
 
 ```php
 <?php
-use CodeInc\CommandLine\Arguments;
+use CodeInc\Cli\Arguments;
 
 // for the request 'myScript.php --param1=val1 --param2 -aDG'
 $arguments = new Arguments();
@@ -88,4 +88,11 @@ $arguments->getArgumentValue("param1"); // returns 'val1'
 $arguments->getArgumentValue("param2"); // returns null
 $arguments->getArgumentValue("param3"); // returns false
 $arguments->hasArgument("param2"); // returns true
+```
+
+## Installation
+This library is available through [Packagist](https://packagist.org/packages/codeinc/lib-cli) and can be installed using [Composer](https://getcomposer.org/): 
+
+```bash
+composer require codeinc/lib-cli
 ```
