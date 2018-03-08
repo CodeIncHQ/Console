@@ -99,4 +99,4 @@ composer require codeinc/lib-cli
 
 # License
 
-The library is published under the MIT license (see [`LICENSE`]
+The library is published under the MIT license (see [`LICENSE`](LICENSE) file).
