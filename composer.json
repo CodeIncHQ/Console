@@ -1,13 +1,13 @@
 {
-  "name": "codeinc/lib-cli",
-  "version": "1.1.1",
+  "name": "codeinc/console",
+  "version": "1.2.0",
   "description": "Code Inc.'s command line interface library",
-  "homepage": "https://github.com/CodeIncHQ/lib-cli",
+  "homepage": "https://github.com/CodeIncHQ/Console",
   "type": "library",
   "license": "MIT",
   "require": {
     "php": ">=7.1",
-    "codeinchq/lib-arrayaccess": "^1.1",
+    "codeinc/array-access": "^1.1",
     "kevinlebrun/colors.php": "^1.0"
   },
   "autoload": {
@@ -27,8 +27,5 @@
     "preferred-install": {
       "*": "dist"
     }
-  },
-  "repositories": [
-    { "type": "vcs", "url": "https://github.com/codeinchq/lib-arrayaccess" }
-  ]
+  }
 }

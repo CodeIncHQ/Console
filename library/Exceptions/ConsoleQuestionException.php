@@ -17,9 +17,9 @@
 // Author:   Joan Fabrégat <joan@codeinc.fr>
 // Date:     19/12/2017
 // Time:     13:22
-// Project:  lib-cli
+// Project:  Console
 //
-namespace CodeInc\Cli\Exceptions;
+namespace CodeInc\Console\Exceptions;
 use Throwable;
 
 

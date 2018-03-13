@@ -19,11 +19,11 @@
 // Time:     12:39
 // Project:  serverinstall
 //
-namespace CodeInc\Cli;
-use CodeInc\Cli\Exceptions\ConsoleException;
-use CodeInc\Cli\Exceptions\ConsoleEmptyResponseException;
-use CodeInc\Cli\Exceptions\ConsoleQuestionException;
-use CodeInc\Cli\Exceptions\ConsoleWrongAnwserException;
+namespace CodeInc\Console;
+use CodeInc\Console\Exceptions\ConsoleException;
+use CodeInc\Console\Exceptions\ConsoleEmptyResponseException;
+use CodeInc\Console\Exceptions\ConsoleQuestionException;
+use CodeInc\Console\Exceptions\ConsoleWrongAnwserException;
 use Colors\Color;
 
 

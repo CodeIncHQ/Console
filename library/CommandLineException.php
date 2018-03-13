@@ -17,9 +17,9 @@
 // Author:   Joan Fabrégat <joan@codeinc.fr>
 // Date:     19/12/2017
 // Time:     13:07
-// Project:  lib-cli
+// Project:  Console
 //
-namespace CodeInc\Cli;
+namespace CodeInc\Console;
 use Throwable;
 
 

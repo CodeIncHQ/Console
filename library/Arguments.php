@@ -17,11 +17,11 @@
 // Author:   Joan Fabrégat <joan@codeinc.fr>
 // Date:     19/12/2017
 // Time:     13:08
-// Project:  lib-cli
+// Project:  Console
 //
-namespace CodeInc\Cli;
+namespace CodeInc\Console;
 use CodeInc\ArrayAccess\ArrayAccessTrait;
-use CodeInc\Cli\Exceptions;
+use CodeInc\Console\Exceptions;
 
 
 /**

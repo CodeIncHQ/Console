@@ -17,12 +17,12 @@
 // Author:   Joan Fabrégat <joan@codeinc.fr>
 // Date:     19/12/2017
 // Time:     13:08
-// Project:  lib-cli
+// Project:  Console
 //
-namespace CodeInc\Cli;
-use CodeInc\Cli\Exceptions\RootRequiredException;
-use CodeInc\Cli\Exceptions\CommandLineRequiredException;
-use CodeInc\Cli\Exceptions\UserRequiredException;
+namespace CodeInc\Console;
+use CodeInc\Console\Exceptions\RootRequiredException;
+use CodeInc\Console\Exceptions\CommandLineRequiredException;
+use CodeInc\Console\Exceptions\UserRequiredException;
 
 
 /**

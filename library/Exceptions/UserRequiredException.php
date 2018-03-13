@@ -17,10 +17,10 @@
 // Author:   Joan Fabrégat <joan@codeinc.fr>
 // Date:     19/12/2017
 // Time:     13:11
-// Project:  lib-cli
+// Project:  Console
 //
-namespace CodeInc\Cli\Exceptions;
-use CodeInc\Cli\CommandLineException;
+namespace CodeInc\Console\Exceptions;
+use CodeInc\Console\CommandLineException;
 use Throwable;
 
 
