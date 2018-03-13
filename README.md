@@ -1,4 +1,4 @@
-# Code Inc.'s command line interface library
+# Console library
 
 ## Usage
 
