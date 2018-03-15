@@ -1,5 +1,7 @@
 # Console library
 
+This PHP 7 library is providing various tools to interract with the user through a console terminal.
+
 ## Usage
 
 ### `CommandLine` class
