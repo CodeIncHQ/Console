@@ -2,41 +2,13 @@
 
 This PHP 7 library is providing various tools to interract with the user through a console. 
 
+
 ## Usage
 
-### `CommandLine` class
-
-The `CommandLine` class provides simple utility static methods
-
-```php
-<?php
-use CodeInc\Console\CommandLine;
-
-// returns true if the script is running in CLI mode
-CommandLine::isCLI(); 
-
-// returns true if the current user is 'root'
-CommandLine::isRoot(); 
-
-// returns true if the current user is 'username'
-CommandLine::isUser("username"); 
-
-// returns the current user name or null is the user is unknow.
-CommandLine::getUser();
-
-// thow an exception if not in CLI mode
-CommandLine::requireCLI(); 
-
-// thow an exception if the current user is not 'root'
-CommandLine::requireRoot(); 
-
-// thow an exception if the current user is not 'username'
-CommandLine::requireUser("username"); 
-```
 
 ### `Console` class
 
-The `Console` class allows you to interact with the user through the console. 
+The [`Console`](src/Console.php) class allows you to interact with the user through the console. 
 
 ```php
 <?php
@@ -72,9 +44,41 @@ echo $console->askOptions("What is your favorite color?", $colors);
 echo $console->askOptions("What is your favorite color?", $colors, true); 
 ```
 
+
+### `CommandLine` class
+
+The [`CommandLine`](src/CommandLine.php) class provides simple utility static methods
+
+```php
+<?php
+use CodeInc\Console\CommandLine;
+
+// returns true if the script is running in CLI mode
+CommandLine::isCLI(); 
+
+// returns true if the current user is 'root'
+CommandLine::isRoot(); 
+
+// returns true if the current user is 'username'
+CommandLine::isUser("username"); 
+
+// returns the current user name or null is the user is unknow.
+CommandLine::getUser();
+
+// thow an exception if not in CLI mode
+CommandLine::requireCLI(); 
+
+// thow an exception if the current user is not 'root'
+CommandLine::requireRoot(); 
+
+// thow an exception if the current user is not 'username'
+CommandLine::requireUser("username"); 
+```
+
+
 ### `Arguments` class
 
-The `Arguments` class is intended to help accessing the script arguments and parameters.
+The [`Arguments`](src/Arguments.php) class is intended to help accessing the script arguments and parameters.
 
 ```php
 <?php
