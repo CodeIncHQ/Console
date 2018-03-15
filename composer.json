@@ -12,7 +12,7 @@
   },
   "autoload": {
     "psr-4": {
-      "CodeInc\\Cli\\": "src/"
+      "CodeInc\\Console\\": "src/"
     }
   },
   "authors": [
