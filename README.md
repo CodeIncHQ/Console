@@ -1,6 +1,6 @@
 # Console library
 
-This PHP 7 library is providing various tools to interract with the user through a console terminal.
+This PHP 7 library is providing various tools to interract with the user through a console. 
 
 ## Usage
 
